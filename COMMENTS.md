@@ -11,6 +11,7 @@ These directions are written for a mac user, if using Linux please just install 
 - Install Python 3, for new mac builds this is likely the default version
 - If pip is not installed, please install it.
 - Run the command `pip3 install --upgrade pip`
+- To install pandas, `pip3 install pandas`
 
 ## Run Directions
 

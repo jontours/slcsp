@@ -10,17 +10,18 @@ merged_frame = zips_dataframe.merge(plans_dataframe, how='inner', left_on=['rate
 chromed_out_frame = merged_frame.loc[merged_frame['metal_level']=='Silver']
 #get two smallest plans by rate area and zipcode
 distilled = chromed_out_frame.groupby(['zipcode', 'rate_area'])['rate'].nsmallest(2).groupby(['zipcode', 'rate_area']).last()
-distilled.to_csv('deDuped.csv')
 further_distilled = distilled.reset_index()
 
 
 slcsp = pd.read_csv('slcsp.csv')
 
+#join on output file to get needed zips
 final_merge = slcsp.merge(further_distilled, how='left', left_on=['zipcode'], right_on=['zipcode'])
 
-
+#some data cleanup here
 filtered_final_result = final_merge[["zipcode", "rate_y"]]
 filtered_final_result = filtered_final_result.rename(columns={"rate_y": "rate"})
 
+#write output and set float for two decimal places
 filtered_final_result.to_csv('slcsp.csv', index=False, float_format='%.2f')
 

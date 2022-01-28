@@ -16,3 +16,4 @@ These directions are written for a mac user, if using Linux please just install 
 
 - Clone this repository onto your local machine
 - From the directory containing the project, run `python slcsp.py`
+- The processed results are stored in `slcsp.csv`
